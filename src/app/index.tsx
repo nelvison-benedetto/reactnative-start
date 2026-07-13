@@ -64,17 +64,20 @@ export default function Index() {
           Welcome to Nativewind!
         </Text>
         <Button
-          title="press me!"
-          onPress={() => showAlert("cliccked btn!")}
+          title="Go To Page 2"
+          onPress={() => {
+            showAlert("went to Page 2");
+            router.push("/second");
+          }}
         ></Button>
         <Pressable
           className="bg-blue-500 pressed:bg-blue-700 p-4"
           onPress={() => {
-            showAlert2("Clicked 2 and Go To Page 2!");
-            router.push("/second");
+            showAlert2("went to Page 3!");
+            router.push("/third");
           }}
         >
-          <Text className="text-white font-semibold">alert+gotopage2</Text>
+          <Text className="text-white font-semibold">Go To Page 3</Text>
         </Pressable>
 
         <View className="w-1/2 h-60 rounded-full  overflow-hidden border-red-600 border-2">
