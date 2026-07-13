@@ -36,20 +36,19 @@ export default function Second() {
     },
   ];
 
+  //uso Reanimation plugin x animation
   const opacity = useSharedValue(0);
-
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value,
   }));
-
   function fadeInAnimation() {
     opacity.value = withTiming(1, {
       duration: 1000,
     });
   }
 
+  //🔥uso Moti (builded on reanimation) plugin x animation!!
   const [visible, toggle] = useReducer((s) => !s, true);
-
   function Shape() {
     return (
       <MotiView
@@ -63,8 +62,9 @@ export default function Second() {
         }}
         transition={{
           type: "timing",
+          duration: 2000,
         }}
-        className="bg-purple-600 h-[1rem] w-[1rem]"
+        className="bg-purple-600 h-24 w-24 rounded-xl"
       />
     );
   }
