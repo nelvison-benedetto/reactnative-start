@@ -4,6 +4,7 @@ import {
   Button,
   Image,
   Pressable,
+  ScrollView,
   Text,
   TextInput,
   View,
@@ -26,7 +27,10 @@ export default function Index() {
   const [number, onChangeNumber] = useState("");
 
   return (
-    <View className="justify-center items-center flex-1 flex-col">
+    <ScrollView
+      className="flex-1 flex-col"
+      contentContainerClassName="justify-center items-center gap-4"
+    >
       <Text className="text-xl font-bold text-blue-600">
         Welcome to Nativewind!
       </Text>
@@ -48,14 +52,30 @@ export default function Index() {
           resizeMode="cover"
         />
       </View>
-      <View className="h-30 w-full" />
-      <TextInput
-        className="border-2"
-        onChangeText={onChangeText}
-        value={number}
-        keyboardType="numeric"
-        placeholder="insert only nums"
-      />
-    </View>
+      <View className="h-[1rem] w-full mx-10" />
+      <View className="w-full px-[2rem]">
+        <TextInput
+          className="border-2 w-full"
+          onChangeText={onChangeText}
+          value={number}
+          keyboardType="numeric"
+          placeholder="insert only nums"
+        />
+      </View>
+      <Text className="text-xl font-bold px-[1rem] bg-green-500">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
+        quos mollitia qui nostrum quas temporibus error expedita animi? Culpa
+        qui pariatur architecto eaque sapiente exercitationem asperiores ad
+        voluptatum saepe officiis quos enim sequi perferendis blanditiis
+        similique, optio distinctio, tempora, velit provident suscipit?
+        Quibusdam, eos vitae libero earum expedita minus, harum cumque maiores
+        voluptatibus quae exercitationem rem quidem et, consectetur commodi
+        illum ad. Laboriosam quis animi libero minus similique laborum inventore
+        molestias voluptatum maxime ratione atque enim suscipit in illum
+        perferendis nisi deserunt explicabo eius rerum labore, sed delectus.
+        Odio rem, ullam autem in delectus dicta voluptate fuga eos aspernatur
+        incidunt.
+      </Text>
+    </ScrollView>
   );
 }
