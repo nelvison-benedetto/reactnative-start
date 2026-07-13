@@ -66,14 +66,14 @@ export default function Index() {
         <Button
           title="Go To Page 2"
           onPress={() => {
-            showAlert("went to Page 2");
+            //showAlert("went to Page 2");
             router.push("/second");
           }}
         ></Button>
         <Pressable
           className="bg-blue-500 pressed:bg-blue-700 p-4"
           onPress={() => {
-            showAlert2("went to Page 3!");
+            //showAlert2("went to Page 3!");
             router.push("/third");
           }}
         >

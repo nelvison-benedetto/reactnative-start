@@ -4,6 +4,7 @@ import {
     Alert,
     Button,
     KeyboardAvoidingView,
+    Modal,
     Pressable,
     ScrollView,
     StatusBar,
@@ -32,7 +33,6 @@ export default function Third() {
     "fade" | "slide" | "none"
   >(TRANSITIONS[0]);
   const changeStatusBarVisibility = () => setHidden(!hidden);
-
   const changeStatusBarStyle = () => {
     const styleId = STYLES.indexOf(statusBarStyle) + 1;
     if (styleId === STYLES.length) {
@@ -41,7 +41,6 @@ export default function Third() {
       setStatusBarStyle(STYLES[styleId]);
     }
   };
-
   const changeStatusBarTransition = () => {
     const transition = TRANSITIONS.indexOf(statusBarTransition) + 1;
     if (transition === TRANSITIONS.length) {
@@ -50,6 +49,9 @@ export default function Third() {
       setStatusBarTransition(TRANSITIONS[transition]);
     }
   };
+
+  //x Modal (cioe popup)
+  const [isModalVisible, setModalVisible] = useState(false);
 
   return (
     <KeyboardAvoidingView
@@ -116,6 +118,38 @@ export default function Third() {
             onPress={changeStatusBarStyle}
           />
         </View>
+        <View className="h-[2rem]" />
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={isModalVisible}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible(!isModalVisible);
+          }}
+        >
+          <View className="flex-1 justify-center items-center">
+            <View className="bg-pink-700 p-[4rem] rounded-xl gap-[2rem]">
+              <Text>TEXT OF MODAL POPUP</Text>
+              <Pressable
+                onPress={() => setModalVisible(!isModalVisible)}
+                className="border border-white p-4"
+              >
+                <Text className="text-white text-lg font-bold">
+                  Click me to hide this Modal!
+                </Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+        <Pressable
+          onPress={() => {
+            setModalVisible(true);
+          }}
+          className="border p-4"
+        >
+          <Text>Click Me To Show Modal popup!</Text>
+        </Pressable>
       </ScrollView>
       <TextInput
         value={number}
