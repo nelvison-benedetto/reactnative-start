@@ -1,5 +1,15 @@
-import { ActivityIndicator, SectionList, Text, View } from "react-native";
-import { useSharedValue, withTiming } from "react-native-reanimated";
+import {
+    ActivityIndicator,
+    Pressable,
+    SectionList,
+    Text,
+    View,
+} from "react-native";
+import Animated, {
+    useAnimatedStyle,
+    useSharedValue,
+    withTiming,
+} from "react-native-reanimated";
 
 export default function Second() {
   const DATA = [
@@ -25,6 +35,11 @@ export default function Second() {
   ];
 
   const opacity = useSharedValue(0);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+  }));
+
   function fadeInAnimation() {
     opacity.value = withTiming(1, {
       duration: 1000,
@@ -50,11 +65,19 @@ export default function Second() {
         ItemSeparatorComponent={() => <View className="h-[0.2rem]" />} //separa gli elementi dello stesso group
         //SectionSeparatorComponent={() => <View className="h-[0.6rem]" />} //separa una sezione dalla successiva
         ListFooterComponent={() => (
-          <ActivityIndicator />
-          <Animated.View className={}>
-            <Text>Hello</Text>
-          </Animated.View>;
-  )}
+          <View>
+            <ActivityIndicator />
+            <Pressable
+              onPress={fadeInAnimation}
+              className="border border-[0.5rem]"
+            >
+              <Text>BTN START ANIMATION</Text>
+            </Pressable>
+            <Animated.View style={animatedStyle}>
+              <Text className="text-xl font-bold">Hello</Text>
+            </Animated.View>
+          </View>
+        )}
       />
     </>
   );
