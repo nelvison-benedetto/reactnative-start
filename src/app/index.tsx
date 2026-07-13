@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   Alert,
   Button,
+  FlatList,
   Image,
   Pressable,
   ScrollView,
@@ -29,6 +30,28 @@ export default function Index() {
 
   const [isEnabled, setIsEnable] = useState(false);
   const toggleSwitch = () => setIsEnable((previousState) => !previousState);
+
+  const DATA = [
+    {
+      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+      title: "First Item",
+    },
+    {
+      id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+      title: "Second Item",
+    },
+    {
+      id: "58694a0f-3da1-471f-bd96-145571e29d72",
+      title: "Third Item",
+    },
+  ];
+
+  type ItemProps = { title: string };
+  const Item = ({ title }: ItemProps) => (
+    <View className="p-[3rem] bg-red-800">
+      <Text className="text-white">{title}</Text>
+    </View>
+  );
 
   return (
     <ScrollView
@@ -68,23 +91,19 @@ export default function Index() {
       </View>
       <Text className="text-xl font-bold px-[1rem] bg-green-500">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
-        quos mollitia qui nostrum quas temporibus error expedita animi? Culpa
-        qui pariatur architecto eaque sapiente exercitationem asperiores ad
-        voluptatum saepe officiis quos enim sequi perferendis blanditiis
-        similique, optio distinctio, tempora, velit provident suscipit?
-        Quibusdam, eos vitae libero earum expedita minus, harum cumque maiores
-        voluptatibus quae exercitationem rem quidem et, consectetur commodi
-        illum ad. Laboriosam quis animi libero minus similique laborum inventore
-        molestias voluptatum maxime ratione atque enim suscipit in illum
-        perferendis nisi deserunt explicabo eius rerum labore, sed delectus.
-        Odio rem, ullam autem in delectus dicta voluptate fuga eos aspernatur
-        incidunt.
+        quos mollitia qui nostrum quas temporibus error expedita animi?
       </Text>
       <Switch
         value={isEnabled}
         onValueChange={toggleSwitch}
-        trackColor={{ false: "#000", true: "#fff" }}
-        thumbColor={isEnabled ? "#f5dd4b" : "#4B39EF"}
+        trackColor={{ false: "#000", true: "#fff" }} //color switch btn in on mode
+        thumbColor={isEnabled ? "#f5dd4b" : "#4B39EF"} //color switch btn in off mode
+      />
+
+      <FlatList
+        data={DATA}
+        renderItem={({ item }) => <Item title={item.title} />} //item appartiene alla classe interna al component
+        keyExtractor={(item) => item.id} //item appartiene alla classe interna al component
       />
     </ScrollView>
   );
