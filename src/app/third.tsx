@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
     Alert,
     KeyboardAvoidingView,
+    Platform,
     Pressable,
     Text,
     TextInput,
@@ -18,7 +19,9 @@ export default function Third() {
 
   return (
     <>
-      <KeyboardAvoidingView>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
         <View>
           <Text>heheh</Text>
           <TextInput
