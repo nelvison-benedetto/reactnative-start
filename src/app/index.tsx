@@ -29,7 +29,7 @@ export default function Index() {
   return (
     <ScrollView
       className="flex-1 flex-col"
-      contentContainerClassName="justify-center items-center gap-4"
+      contentContainerClassName="justify-center items-center gap-4 py-[2rem]"
     >
       <Text className="text-xl font-bold text-blue-600">
         Welcome to Nativewind!
