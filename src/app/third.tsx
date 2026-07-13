@@ -23,7 +23,7 @@ export default function Third() {
     Alert.alert(message);
   }
 
-  //x status bar
+  //x status bar (cioe barra phoen dove vedi wify battery ora now ect)
   const [hidden, setHidden] = useState(false);
   const [statusBarStyle, setStatusBarStyle] = useState<StatusBarStyle>(
     STYLES[0],
