@@ -1,4 +1,5 @@
-import { SectionList, Text, View } from "react-native";
+import { ActivityIndicator, SectionList, Text, View } from "react-native";
+import { useSharedValue, withTiming } from "react-native-reanimated";
 
 export default function Second() {
   const DATA = [
@@ -23,6 +24,13 @@ export default function Second() {
     },
   ];
 
+  const opacity = useSharedValue(0);
+  function fadeInAnimation() {
+    opacity.value = withTiming(1, {
+      duration: 1000,
+    });
+  }
+
   return (
     <>
       <SectionList
@@ -38,8 +46,15 @@ export default function Second() {
             {title}
           </Text>
         )}
+
         ItemSeparatorComponent={() => <View className="h-[0.2rem]" />} //separa gli elementi dello stesso group
         //SectionSeparatorComponent={() => <View className="h-[0.6rem]" />} //separa una sezione dalla successiva
+        ListFooterComponent={() => (
+          <ActivityIndicator />
+          <Animated.View className={}>
+            <Text>Hello</Text>
+          </Animated.View>;
+  )}
       />
     </>
   );
