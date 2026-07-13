@@ -1,3 +1,5 @@
+import { MotiView } from "moti";
+import { useReducer } from "react";
 import {
     ActivityIndicator,
     Pressable,
@@ -46,6 +48,27 @@ export default function Second() {
     });
   }
 
+  const [visible, toggle] = useReducer((s) => !s, true);
+
+  function Shape() {
+    return (
+      <MotiView
+        from={{
+          opacity: 0,
+          scale: 0.5,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+        }}
+        transition={{
+          type: "timing",
+        }}
+        className="bg-purple-600 h-[1rem] w-[1rem]"
+      />
+    );
+  }
+
   return (
     <>
       <SectionList
@@ -61,7 +84,6 @@ export default function Second() {
             {title}
           </Text>
         )}
-
         ItemSeparatorComponent={() => <View className="h-[0.2rem]" />} //separa gli elementi dello stesso group
         //SectionSeparatorComponent={() => <View className="h-[0.6rem]" />} //separa una sezione dalla successiva
         ListFooterComponent={() => (
@@ -71,11 +93,14 @@ export default function Second() {
               onPress={fadeInAnimation}
               className="border border-[0.5rem]"
             >
-              <Text>BTN START ANIMATION</Text>
+              <Text>BTN START ANIMATION using Reanimated</Text>
             </Pressable>
             <Animated.View style={animatedStyle}>
               <Text className="text-xl font-bold">Hello</Text>
             </Animated.View>
+            <Pressable onPress={toggle} className="border border-red-800">
+              {visible && <Shape />}
+            </Pressable>
           </View>
         )}
       />
