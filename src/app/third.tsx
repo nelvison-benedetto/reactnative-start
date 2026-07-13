@@ -20,7 +20,9 @@ export default function Third() {
   return (
     <>
       <KeyboardAvoidingView
+        className="flex-1"
         behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={80}
       >
         <View>
           <Text>heheh</Text>
@@ -28,14 +30,17 @@ export default function Third() {
             value={number}
             onChangeText={onChangeText}
             keyboardType="numeric"
+            placeholder="insert a number"
+            className="border border-yellow-600"
           />
           <View>
             <Pressable
               onPress={() => {
                 XXX("number");
               }}
+              className="bg-black"
             >
-              <Text>Btn</Text>
+              <Text className="text-white">Btn</Text>
             </Pressable>
           </View>
         </View>
