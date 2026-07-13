@@ -29,11 +29,17 @@ export default function Second() {
         sections={DATA}
         keyExtractor={(item, index) => item + index}
         renderItem={({ item }) => (
-          <View>
+          <View className="bg-gray-400">
             <Text>{item}</Text>
           </View>
         )}
-        renderSectionHeader={({ section: { title } }) => <Text>{title}</Text>}
+        renderSectionHeader={({ section: { title } }) => (
+          <Text className="text-lg font-bold text-blue-800 mb-2 mt-4">
+            {title}
+          </Text>
+        )}
+        ItemSeparatorComponent={() => <View className="h-[0.2rem]" />} //separa gli elementi dello stesso group
+        //SectionSeparatorComponent={() => <View className="h-[0.6rem]" />} //separa una sezione dalla successiva
       />
     </>
   );
