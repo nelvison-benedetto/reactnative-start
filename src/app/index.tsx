@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { useState } from "react";
 import {
   Alert,
@@ -68,9 +69,12 @@ export default function Index() {
         ></Button>
         <Pressable
           className="bg-blue-500 pressed:bg-blue-700 p-4"
-          onPress={() => showAlert2("Clicked 2")}
+          onPress={() => {
+            showAlert2("Clicked 2 and Go To Page 2!");
+            router.push("/second");
+          }}
         >
-          <Text className="text-white font-semibold">pressablewhattddt</Text>
+          <Text className="text-white font-semibold">alert+gotopage2</Text>
         </Pressable>
 
         <View className="w-1/2 h-60 rounded-full  overflow-hidden border-red-600 border-2">
