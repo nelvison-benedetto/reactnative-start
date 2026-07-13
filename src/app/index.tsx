@@ -5,6 +5,7 @@ import {
   Image,
   Pressable,
   ScrollView,
+  Switch,
   Text,
   TextInput,
   View,
@@ -25,6 +26,9 @@ export default function Index() {
 
   const [text, onChangeText] = useState("default text");
   const [number, onChangeNumber] = useState("");
+
+  const [isEnabled, setIsEnable] = useState(false);
+  const toggleSwitch = () => setIsEnable((previousState) => !previousState);
 
   return (
     <ScrollView
@@ -76,6 +80,12 @@ export default function Index() {
         Odio rem, ullam autem in delectus dicta voluptate fuga eos aspernatur
         incidunt.
       </Text>
+      <Switch
+        value={isEnabled}
+        onValueChange={toggleSwitch}
+        trackColor={{ false: "#000", true: "#fff" }}
+        thumbColor={isEnabled ? "#f5dd4b" : "#4B39EF"}
+      />
     </ScrollView>
   );
 }
