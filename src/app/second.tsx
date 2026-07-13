@@ -1,3 +1,4 @@
+import { ScanEye } from "lucide-react-native";
 import { MotiView } from "moti";
 import { useReducer } from "react";
 import {
@@ -101,6 +102,7 @@ export default function Second() {
             <Pressable onPress={toggle} className="border border-red-800">
               {visible && <Shape />}
             </Pressable>
+            <ScanEye size={32} color="blue" strokeWidth={1.5} />
           </View>
         )}
       />
