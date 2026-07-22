@@ -1,17 +1,17 @@
 import { useHeaderHeight } from "@react-navigation/elements";
 import { useState } from "react";
 import {
-    Alert,
-    Button,
-    KeyboardAvoidingView,
-    Modal,
-    Pressable,
-    ScrollView,
-    StatusBar,
-    StatusBarStyle,
-    Text,
-    TextInput,
-    View,
+  Alert,
+  Button,
+  KeyboardAvoidingView,
+  Modal,
+  Pressable,
+  ScrollView,
+  StatusBar,
+  StatusBarStyle,
+  Text,
+  TextInput,
+  View,
 } from "react-native";
 
 const STYLES = ["default", "dark-content", "light-content"] as const;
